@@ -18,6 +18,7 @@ class Game
 
     p @word  # For debugging purposes, you might want to remove this later
     while @is_game
+      puts "Enter the letter you're thinking."
       player_letter = @player.user_word
       found = false
       
@@ -27,7 +28,7 @@ class Game
           @display.display(letter, index)
         end
       end
-      p @display.temp_word.join(' ')
+      puts "> #{@display.temp_word.join(' ')}"
 
       unless found
         @deaths += 1
@@ -40,10 +41,10 @@ class Game
       end
 
       if @display.temp_word.join("") == @word
-        puts "Congratulations! You guessed the word: #{@word}"
+        puts "Yatta! You guessed the word correctly."
         @is_game = false
       end
-      puts "-"*22
+      puts "-"*30
     end
   end
 end
