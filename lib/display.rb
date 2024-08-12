@@ -15,7 +15,7 @@ class DisplayWord
 
   def display(letter, index)
     @temp_word[index] = letter
-    p @temp_word
+    return @temp_word
   end
 end
 

@@ -27,9 +27,11 @@ class Game
           @display.display(letter, index)
         end
       end
+      p @display.temp_word.join(' ')
 
       unless found
         @deaths += 1
+        puts "#{7-@deaths} turns remaining!"
       end
       
       if @deaths == 7
@@ -41,6 +43,7 @@ class Game
         puts "Congratulations! You guessed the word: #{@word}"
         @is_game = false
       end
+      puts "-"*22
     end
   end
 end
