@@ -5,7 +5,7 @@ class RandomWord
     random_word = words_array.sample
     
     if random_word.length > 5 and random_word.length < 12
-      return "#{random_word} #{random_word.length}"
+      return random_word
     else
       word()
     end
@@ -15,6 +15,6 @@ end
 
 
 # Testing
-random = RandomWord.new
-puts random.word
+# random = RandomWord.new
+# puts random.word
 
