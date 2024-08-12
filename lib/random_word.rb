@@ -7,6 +7,8 @@ class RandomWord
 
 end
 
+
+# Testing
 random = RandomWord.new
 puts random.word
 
