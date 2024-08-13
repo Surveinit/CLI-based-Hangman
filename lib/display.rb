@@ -1,7 +1,7 @@
 require_relative "random_word"
 
 class DisplayWord
-  attr_reader :temp_word
+  attr_accessor :temp_word
 
   def initialize
     @temp_word = []

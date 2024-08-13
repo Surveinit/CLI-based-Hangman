@@ -1,6 +1,6 @@
 class Player
   def user_word
-    guess = gets.chomp
+    guess = gets.chomp.downcase
   end
 end
 
