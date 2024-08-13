@@ -2,6 +2,7 @@ require_relative "player"
 require_relative "random_word"
 require_relative "display"
 require 'json'
+require 'colorize'
 
 class Game 
   def initialize
@@ -34,7 +35,7 @@ def save
 end
 
   def play
-    puts "Would you like to load previous game? (y/n)"
+    puts " Would you like to load previous game? (y/n) ".colorize(:color => :black, :background => :light_yellow) 
     load_response = gets.chomp
     if load_response == "y"
       load()
@@ -47,7 +48,7 @@ end
 
     p @word  # For debugging purposes, you might want to remove this later
     while @is_game
-      puts "Would you like to save this game? (y/n)"
+      puts " Would you like to save this game? (y/n) ".colorize(:color => :black, :background => :light_yellow)
       save_response = gets.chomp
       if save_response == "y"
         save()
@@ -55,7 +56,7 @@ end
         nil          
       end 
 
-      puts "Enter the letter you're thinking."
+      puts " Enter the letter you're thinking. ".colorize(:color => :white, :background => :grey)
       player_letter = @player.user_word
       found = false
       
@@ -69,16 +70,18 @@ end
 
       unless found
         @deaths += 1
-        puts "#{7-@deaths} turns remaining!"
+        puts "#{7-@deaths} turns remaining!".colorize(:color => :black, :background => :light_red)
       end
       
       if @deaths == 7
-        puts "Game over! The word was: #{@word}"
+        puts ""
+        puts " Game over! The word was: #{@word} ".colorize(:color => :black, :background => :red)
         @is_game = false
       end
 
       if @display.temp_word.join("") == @word
-        puts "Yatta! You guessed the word correctly."
+        puts ""
+        puts " Yatta! You guessed the word correctly. ".colorize(:color => :black, :background => :yellow)
         @is_game = false
       end
       puts "-"*30
