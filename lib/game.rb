@@ -14,6 +14,24 @@ class Game
     @display = DisplayWord.new 
   end
 
+  def instructions
+    puts <<~HEREDOC
+      Welcome to Hangman! Here are the rules:
+      1. You'll be given a hidden word represented by underscores.
+      2. Enter a single letter guess at a time.
+      3. Each correct letter will be revealed in its correct position.
+      4. Incorrect guesses will be tracked, and you have a limited number of [7] incorrect attempts.
+      5. The game ends when you either guess the word or run out of attempts.
+      6. Try to guess the word before the attempts run out!
+
+      Good luck, and have fun!
+
+      Press ENTER to start the game!
+    HEREDOC
+  
+    gets
+  end
+
   def load
     file_content = File.read('data.json')
     data = JSON.parse(file_content)
@@ -35,6 +53,7 @@ def save
 end
 
   def play
+    instructions()
     puts " Would you like to load previous game? (y/n) ".colorize(:color => :black, :background => :light_yellow) 
     load_response = gets.chomp
     if load_response == "y"
@@ -42,11 +61,10 @@ end
     elsif load_response == 'n'
       nil          
     end 
-    
-    # Prepare the display with underscores
+
     @display.make_fill_ins(@word.length) if @display.temp_word.empty?
 
-    p @word  # For debugging purposes, you might want to remove this later
+    # p @word  # For debugging
     while @is_game
       puts " Would you like to save this game? (y/n) ".colorize(:color => :black, :background => :light_yellow)
       save_response = gets.chomp
@@ -84,7 +102,7 @@ end
         puts " Yatta! You guessed the word correctly. ".colorize(:color => :black, :background => :yellow)
         @is_game = false
       end
-      puts "-"*30
+      puts "-"*36
     end
   end
 end
