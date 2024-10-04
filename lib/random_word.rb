@@ -1,4 +1,4 @@
-class RandomWord 
+class RandomWord
   def word
     file_content = File.read(File.expand_path('../google-10000-english-no-swears.txt', __dir__))
     words_array = file_content.split("\n")
@@ -10,8 +10,6 @@ class RandomWord
   end
 end
 
-
 # Testing
 # random = RandomWord.new
 # puts random.word
-

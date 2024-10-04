@@ -1,4 +1,4 @@
-require_relative "random_word"
+require_relative 'random_word'
 
 class DisplayWord
   attr_accessor :temp_word
@@ -9,18 +9,18 @@ class DisplayWord
 
   def make_fill_ins(length)
     (0...length).each do |i|
-      @temp_word.push("_")
+      @temp_word.push('_')
     end
   end
 
   def display(letter, index)
     @temp_word[index] = letter
-    return @temp_word
+    @temp_word
   end
 end
-
 
 # Test
 # demo = DisplayWord.new
 # p demo.display('m',1)
 # p demo.display('p',2)
+
